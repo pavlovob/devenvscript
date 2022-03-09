@@ -1,5 +1,5 @@
 #/bin/bash
-
+#Script automates some dev env setups for popular IDE's  and platforms
 apt-install(){
 	sudo apt update
 	sudo apt install -y $1
