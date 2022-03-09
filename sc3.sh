@@ -27,7 +27,8 @@ LIST=$(whiptail --title  "What do you need to install?" --checklist --separate-o
 "12" "Ansible" OFF \
 "13" "Terraform" OFF \
 "14" "Packer" OFF \
-"15" "MC File Manager" OFF 3>&1 1>&2 2>&3)
+"15" "MC File Manager" OFF \
+"16" "Atom.io code editor" OFF 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 if [ "$exitstatus" != 0 ];  then
@@ -151,6 +152,12 @@ case $item in
 	sudo apt update
 	sudo apt install -y mc
 	;;	
+
+	"16") # Atom.io code editor
+	msg "Atom.io code editor for Ubuntu 20.04 stable release"
+	sudo snap install --classic atom
+	;;	
+
 esac    
 done
 echo finished.
