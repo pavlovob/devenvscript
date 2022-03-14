@@ -62,11 +62,11 @@ case $item in
 	msg "MySQL Server 8.0.27"
 	apt-install "mysql-server"
 	sudo mysql_secure_installation
-	echo make the user and grant admin privs like in comment:
+	echo make the user and grant admin priviledges:
 	echo $sudo mysql -u root -p
-	echo CREATE USER 'my_user'@'localhost' IDENTIFIED BY 'password';
-	echo GRANT ALL PRIVILEGES ON *.* TO 'my_user'@'localhost';
-	echo FLUSH PRIVILEGES;
+	echo >CREATE USER 'my_user'@'localhost' IDENTIFIED BY 'password';
+	echo >GRANT ALL PRIVILEGES ON *.* TO 'my_user'@'localhost';
+	echo >FLUSH PRIVILEGES;
 	;;
 	
 	"3") # MySQL Client
