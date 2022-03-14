@@ -28,7 +28,8 @@ LIST=$(whiptail --title  "What do you need to install?" --checklist --separate-o
 "13" "Terraform" OFF \
 "14" "Packer" OFF \
 "15" "MC File Manager" OFF \
-"16" "Atom.io code editor" OFF 3>&1 1>&2 2>&3)
+"16" "Atom.io code editor" OFF \
+"17" "pgAdmin Software" OFF 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 if [ "$exitstatus" != 0 ];  then
@@ -158,6 +159,15 @@ case $item in
 	sudo snap install --classic atom
 	;;	
 
+	"17") # pgAdmin
+	msg "PostgreSQL pgAdmin software"
+	sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+	sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+	sudo apt install pgadmin4
+	sudo apt install pgadmin4-desktop
+	sudo apt install pgadmin4-web 
+	sudo /usr/pgadmin4/bin/setup-web.sh
+	;;
 esac    
 done
 echo finished.
