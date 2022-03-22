@@ -147,15 +147,12 @@ case $item in
 	;;
 		
 	"15") # ------------- MC FILE MANAGER -------------------------------------------------
-	echo ----------------------------------------------------------------------------------
-	echo ---------------- Installing MC file manager --------------------------------------
-	echo ----------------------------------------------------------------------------------
-	echo Installing MC file manager....
+	msg "MC File Manager"
 	sudo apt update
 	sudo apt install -y mc
 	;;	
 
-	"16") # Atom.io code editor
+	"16") # Atom.io code editor	
 	msg "Atom.io code editor for Ubuntu 20.04 stable release"
 	sudo snap install --classic atom
 	;;	
