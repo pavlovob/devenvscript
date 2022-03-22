@@ -29,7 +29,8 @@ LIST=$(whiptail --title  "What do you need to install?" --checklist --separate-o
 "14" "Packer" OFF \
 "15" "MC File Manager" OFF \
 "16" "Atom.io code editor" OFF \
-"17" "pgAdmin Software" OFF 3>&1 1>&2 2>&3)
+"17" "pgAdmin Software" OFF \
+"18" "PostgreSQL Server" OFF 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 if [ "$exitstatus" != 0 ];  then
@@ -168,6 +169,12 @@ case $item in
 	sudo apt install pgadmin4-web 
 	sudo /usr/pgadmin4/bin/setup-web.sh
 	;;
+
+	"18") # PosqgreSQL
+	msg "PostgreSQL server for Ubuntu 20.04"
+	sudo apt update
+	sudo apt install postgresql
+	;;	
 esac    
 done
 echo finished.
