@@ -11,7 +11,7 @@ msg(){
 }
 
 LIST=$(whiptail --title  "What do you need to install?" --checklist --separate-output \
-"Choose preferred software" 23 60 16 \
+"Choose preferred software" 25 57 19 \
 "0" "SSH Server" OFF \
 "1" "Google_Chrome" OFF \
 "2" "MySQL Server" OFF \
