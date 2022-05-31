@@ -53,10 +53,14 @@ case $item in
 	"1") # Gogole Chrome stable
 	msg "Google Chrome Stable"
 	echo Installing Google Chrome stable...
-	if [ ! -f  google-chrome-stable_current_amd64.deb ]; then
-		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	fi
-	sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+	sudo apt update
+	sudo apt install google-chrome-stable
+	#if [ ! -f  google-chrome-stable_current_amd64.deb ]; then
+	#	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	#fi
+	#sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
 	;;
 
 	"2") # MySQL Server
@@ -128,19 +132,19 @@ case $item in
 	;;
 
 	"12") # Ansible
-	msg "Ansible for Ubuntu 20.04 stable release"
+	msg "Ansible for Ubuntu stable release"
 	apt-install "ansible"
 	;;	
 	
 	"13") # Terraform
-	msg "Hashicorp Terraform for Ubuntu 20.04 stable release"
+	msg "Hashicorp Terraform for Ubuntu stable release"
 	curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 	sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 	apt-install "terraform"
 	;;
 
 	"14") # Packer
-	msg "Hashicorp Packer for Ubuntu 20.04 stable release"
+	msg "Hashicorp Packer for Ubuntu stable release"
 	curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 	apt-install "packer"
@@ -153,7 +157,7 @@ case $item in
 	;;	
 
 	"16") # Atom.io code editor	
-	msg "Atom.io code editor for Ubuntu 20.04 stable release"
+	msg "Atom.io code editor for Ubuntu stable release"
 	sudo snap install --classic atom
 	;;	
 
@@ -168,7 +172,7 @@ case $item in
 	;;
 
 	"18") # PosqgreSQL
-	msg "PostgreSQL server for Ubuntu 20.04"
+	msg "PostgreSQL server for Ubuntu"
 	sudo apt update
 	sudo apt install postgresql
 	;;	
