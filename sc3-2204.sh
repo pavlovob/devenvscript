@@ -81,10 +81,7 @@ case $item in
 		
 	"4") # MySQL Workbench
 	msg "MySQL Workbench Community 8.0.27"
-	if [ ! -f  mysql-workbench-community_8.0.27-1ubuntu20.04_amd64.deb ]; then
-		wget https://dev.mysql.com/get/mysql-workbench-community_8.0.27-1ubuntu20.04_amd64.deb
-	fi
-	sudo dpkg -i --force-depends mysql-workbench-community_8.0.27-1ubuntu20.04_amd64.deb
+	sudo snap install mysql-workbench-community
 	;;
 	
 	"5") # PHP
@@ -120,7 +117,7 @@ case $item in
 	;;
 	
 	"11") # Docker
-	msg "Docker for Ubuntu 20.04 stable release"
+	msg "Docker for Ubuntu stable release"
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 	sudo apt update
