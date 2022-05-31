@@ -122,10 +122,10 @@ case $item in
 	"11") # Docker
 	msg "Docker for Ubuntu 20.04 stable release"
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable"
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 	sudo apt update
 	apt-cache policy docker-ce
-	sudo apt install docker-ce
+	sudo apt install "docker-ce docker-compose"
 	sudo usermod -aG docker ${USER}
 	su - ${USER}
 	id -nG
