@@ -47,7 +47,7 @@ do
 case $item in
 	"0") # SSH Server
 	msg "SSH Server and run it!"
-	sudo apt install "openssh-server"
+	sudo apt install -y "openssh-server"
 	sudo systemctl enable sshd
 	;;
 	
@@ -56,8 +56,7 @@ case $item in
 	echo Installing Google Chrome stable...
 	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-	sudo apt update
-	sudo apt install google-chrome-stable
+	apt-install google-chrome-stable
 	#if [ ! -f  google-chrome-stable_current_amd64.deb ]; then
 	#	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	#fi
@@ -65,8 +64,8 @@ case $item in
 	;;
 
 	"2") # MySQL Server
-	msg "MySQL Server 8.0.27"
-	apt-install "mysql-server"
+	msg "MySQL Server latest version"
+	sudo apt install -y "mysql-server"
 	sudo mysql_secure_installation
 	echo make the user and grant admin priviledges:
 	echo $sudo mysql -u root -p
@@ -77,7 +76,7 @@ case $item in
 	
 	"3") # MySQL Client
 	msg "MySQL Client"
-	apt-install "mysql-client"
+	sudo apt install -y "mysql-client"
 	;;
 		
 	"4") # MySQL Workbench
@@ -87,17 +86,17 @@ case $item in
 	
 	"5") # PHP
 	msg "PHP interpretator with some modules"
-	apt-install "php php-pdo php-intl php-xml php-zip php-mbstring phpunit php-mysql php-sqlite3 php-ldap php-gd unzip php-curl"
+	sudo apt install -y "php php-pdo php-intl php-xml php-zip php-mbstring phpunit php-mysql php-sqlite3 php-ldap php-gd unzip php-curl"
 	;;
 		
 	"6") # Composer
 	msg "PHP COMPOSER"
-	apt-install "composer"
+	sudo apt install -y "composer"
 	;;	
 	
 	"7") # GIT
 	msg "GIT"
-	apt-install "git"
+	sudo apt install -y "git"
 	;;	
 
 	"8") # Postman
@@ -143,7 +142,7 @@ case $item in
 
 	"12") # Ansible
 	msg "Ansible for Ubuntu stable release"
-	apt-install "ansible"
+	sudo apt install -y ansible
 	;;	
 	
 	"13") # Terraform
@@ -162,7 +161,6 @@ case $item in
 		
 	"15") # ------------- MC FILE MANAGER -------------------------------------------------
 	msg "MC File Manager"
-	sudo apt update
 	sudo apt install -y mc
 	;;	
 
@@ -175,16 +173,13 @@ case $item in
 	msg "PostgreSQL pgAdmin software"
 	sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
 	sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
-	sudo apt install pgadmin4
-	sudo apt install pgadmin4-desktop
-	sudo apt install pgadmin4-web 
+	sudo apt install "pgadmin4 pgadmin4-desktop pgadmin4-web" 
 	sudo /usr/pgadmin4/bin/setup-web.sh
 	;;
 
 	"18") # PosqgreSQL
 	msg "PostgreSQL server for Ubuntu"
-	sudo apt update
-	sudo apt install postgresql
+	sudo apt install -y postgresql
 	;;	
 esac    
 done
