@@ -38,15 +38,16 @@ if [ "$exitstatus" != 0 ];  then
      exit
 fi
 # Common libs install
-#apt-install "software-properties-common apt-transport-https net-tools openssh-server"
-sudo apt-install "software-properties-common apt-transport-https net-tools ca-certificates curl gnupg lsb-release"
+sudo apt update
+sudo apt install -y "curl software-properties-common apt-transport-https net-tools ca-certificates gnupg lsb-release"
 sudo apt --fix-broken install
+
 for item in $LIST
 do
 case $item in
 	"0") # SSH Server
 	msg "SSH Server and run it!"
-	apt-install "openssh-server"
+	sudo apt install "openssh-server"
 	sudo systemctl enable sshd
 	;;
 	
