@@ -39,7 +39,7 @@ if [ "$exitstatus" != 0 ];  then
 fi
 # Common libs install
 sudo apt update
-sudo apt install -y "curl software-properties-common apt-transport-https net-tools ca-certificates gnupg lsb-release"
+sudo apt install -y "curl software-properties-common apt-transport-https net-tools ca-certificates gnupg lsb-release sshpass"
 sudo apt --fix-broken install
 
 for item in $LIST
