@@ -39,7 +39,7 @@ if [ "$exitstatus" != 0 ];  then
 fi
 # Common libs install
 sudo apt update
-sudo apt install -y "curl software-properties-common apt-transport-https net-tools ca-certificates gnupg lsb-release sshpass"
+sudo apt install -y curl software-properties-common apt-transport-https net-tools ca-certificates gnupg lsb-release sshpass
 sudo apt --fix-broken install
 
 for item in $LIST
@@ -86,7 +86,7 @@ case $item in
 	
 	"5") # PHP
 	msg "PHP interpretator with some modules"
-	sudo apt install -y "php php-pdo php-intl php-xml php-zip php-mbstring phpunit php-mysql php-sqlite3 php-ldap php-gd unzip php-curl"
+	sudo apt install -y php php-pdo php-intl php-xml php-zip php-mbstring phpunit php-mysql php-sqlite3 php-ldap php-gd unzip php-curl
 	;;
 		
 	"6") # Composer
