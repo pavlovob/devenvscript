@@ -82,6 +82,7 @@ case $item in
 	"4") # MySQL Workbench
 	msg "MySQL Workbench Community 8.0.27"
 	sudo snap install mysql-workbench-community
+	sudo snap connect mysql-workbench-community:password-manager-service :password-manager-service
 	;;
 	
 	"5") # PHP
