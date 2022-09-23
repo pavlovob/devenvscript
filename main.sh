@@ -136,6 +136,7 @@ case $item in
 	# apt-cache policy docker-ce
 	#sudo chmod a+r /etc/apt/keyrings/docker.gpg
 	apt-install "docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose"
+	sudo groupadd docker
 	sudo usermod -aG docker ${USER}
 	su - ${USER}
 	id -nG
